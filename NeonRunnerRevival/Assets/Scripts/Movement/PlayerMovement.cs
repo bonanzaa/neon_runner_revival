@@ -12,8 +12,9 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
 
         private void Update()
         {
-            transform.position += _rawMovementInput * _speed * Time.deltaTime;
+            Move();
         }
+
 
         private void OnEnable()
         {
@@ -32,6 +33,15 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
             Vector2 movementInput = context.ReadValue<Vector2>();
             _rawMovementInput = new Vector3(movementInput.x, movementInput.y);            
             Debug.Log($"movemtn detected in {_rawMovementInput} direction");
+        }
+        private void Move()
+        {
+            transform.position += _rawMovementInput * _speed * Time.deltaTime;
+        }
+
+        private void SetSpeed(float value)
+        {
+            _speed = value;
         }
     }
 }
