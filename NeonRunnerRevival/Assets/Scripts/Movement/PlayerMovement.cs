@@ -23,8 +23,11 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
             rb = GetComponent<Rigidbody2D>();
         }
 
-        private void Update()
-        {
+        private void FixedUpdate() {
+            // doing this in FixedUpdate, because of collision
+            // detection issues. In Update() it skips the collision
+            // calculation frames, and the player jitters
+            // when colliding with something
             Move();
         }
 

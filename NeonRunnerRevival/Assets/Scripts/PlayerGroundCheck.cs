@@ -5,7 +5,7 @@ using NeonRunnerRevival.Assets.Scripts.Movement;
 
 namespace NeonRunnerRevival
 {
-    public class PlayerTestScript : MonoBehaviour
+    public class PlayerGroundCheck : MonoBehaviour
     {
         private PlayerMovement _playerMovement;
         public bool Grounded = true;

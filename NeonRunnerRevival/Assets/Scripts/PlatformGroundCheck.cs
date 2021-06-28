@@ -6,7 +6,7 @@ namespace NeonRunnerRevival
 {
     public class PlatformGroundCheck : MonoBehaviour
     {
-     public PlayerTestScript player;
+     public PlayerGroundCheck player;
         private void OnTriggerExit2D(Collider2D other) {
             if(other.CompareTag("Player")){
                 player.Grounded = false;
