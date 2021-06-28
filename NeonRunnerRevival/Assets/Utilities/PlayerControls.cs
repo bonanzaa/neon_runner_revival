@@ -25,6 +25,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""2694b40a-2e8d-46ea-a6c8-25e837754040"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -148,6 +156,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f0064215-8913-4803-99a6-8794fb5749ae"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -157,6 +176,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // TreadmillControls
         m_TreadmillControls = asset.FindActionMap("TreadmillControls", throwIfNotFound: true);
         m_TreadmillControls_Movement = m_TreadmillControls.FindAction("Movement", throwIfNotFound: true);
+        m_TreadmillControls_Dash = m_TreadmillControls.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,11 +227,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_TreadmillControls;
     private ITreadmillControlsActions m_TreadmillControlsActionsCallbackInterface;
     private readonly InputAction m_TreadmillControls_Movement;
+    private readonly InputAction m_TreadmillControls_Dash;
     public struct TreadmillControlsActions
     {
         private @PlayerControls m_Wrapper;
         public TreadmillControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_TreadmillControls_Movement;
+        public InputAction @Dash => m_Wrapper.m_TreadmillControls_Dash;
         public InputActionMap Get() { return m_Wrapper.m_TreadmillControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -224,6 +246,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnMovement;
+                @Dash.started -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_TreadmillControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -231,6 +256,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -238,5 +266,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface ITreadmillControlsActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }
