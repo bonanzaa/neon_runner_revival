@@ -13,7 +13,8 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
         [SerializeField] private float _speed;
         private Rigidbody2D rb;
         private bool _canDash = true;
-        private bool _Dashing = false;
+        [NonSerialized]
+        public bool Dashing = false;
         private float _dashTime = 0.1f;
         public float DashCooldown = 1.5f;
         public float DashDistance = 50f;
@@ -54,7 +55,7 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
         }
 
         public void OnDash(UnityEngine.InputSystem.InputAction.CallbackContext context){
-            if(_canDash && _Dashing == false){ 
+            if(_canDash && Dashing == false){ 
                 // takes the direction from the movement
                 Dash(_rawMovementInput);
             }
@@ -65,10 +66,10 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
         }
 
         private void Dash(Vector2 direction){
-            _Dashing = true;
+            Dashing = true;
             // good place for enabling i-frames
             // and "levitation" or whatever
-            StartCoroutine(Dashing(direction));
+            StartCoroutine(TheDash(direction));
             StartCoroutine(DashCooldownTimer());
         }
 
@@ -86,7 +87,7 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
         }
 
         // dashing through coroutine
-        private IEnumerator Dashing(Vector2 direction){
+        private IEnumerator TheDash(Vector2 direction){
             float time = _dashTime;
             while(time > 0){
 
@@ -96,7 +97,7 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
                 yield return new WaitForSeconds(Time.deltaTime);
             }
             rb.velocity = new Vector2(0,0);
-            _Dashing = false;
+            Dashing = false;
             // disable i-frames here
             yield break;
         }
