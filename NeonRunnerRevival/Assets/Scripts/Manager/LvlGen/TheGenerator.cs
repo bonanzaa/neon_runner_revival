@@ -142,3 +142,4 @@ namespace NeonRunnerRevival.Assets.Scripts.Manager.LvlGen
             }
         }
     }
+}
