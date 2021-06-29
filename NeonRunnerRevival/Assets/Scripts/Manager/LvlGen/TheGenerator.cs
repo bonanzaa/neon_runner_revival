@@ -63,7 +63,6 @@ namespace NeonRunnerRevival.Assets.Scripts.Manager.LvlGen
             }
         }
 
-
         private int RandomIndex(List<Transform> list)
         {
             return Random.Range(0, list.Count);
