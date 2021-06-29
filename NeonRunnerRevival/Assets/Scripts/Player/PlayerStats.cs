@@ -7,10 +7,17 @@ namespace NeonRunnerRevival.Assets.Scripts
 {
     class PlayerStats : MonoBehaviour
     {
+        public PlayerControls Controls;
         [SerializeField]
         private int _currentHp;
         [SerializeField]
         private int _maxHP = 10;
+        public float FireRate = 0.1f;
+
+
+        private void OnEnable() {
+            Controls = new PlayerControls();
+        }
 
         private void Start()
         {

@@ -33,6 +33,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""569c57ea-28c9-4724-b739-c7b9c21ba8e9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""470be35a-8d28-4335-a2bb-3778f8a05b05"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -165,6 +181,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13fae4fd-9835-49fb-9f30-c1638a035a6b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a51186e-163c-445f-bc3a-aa678ad851de"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -404,6 +442,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_TreadmillControls = asset.FindActionMap("TreadmillControls", throwIfNotFound: true);
         m_TreadmillControls_Movement = m_TreadmillControls.FindAction("Movement", throwIfNotFound: true);
         m_TreadmillControls_Dash = m_TreadmillControls.FindAction("Dash", throwIfNotFound: true);
+        m_TreadmillControls_Shoot = m_TreadmillControls.FindAction("Shoot", throwIfNotFound: true);
+        m_TreadmillControls_MousePosition = m_TreadmillControls.FindAction("MousePosition", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_MenuInteractions1 = m_Menu.FindAction("MenuInteractions1", throwIfNotFound: true);
@@ -461,12 +501,16 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private ITreadmillControlsActions m_TreadmillControlsActionsCallbackInterface;
     private readonly InputAction m_TreadmillControls_Movement;
     private readonly InputAction m_TreadmillControls_Dash;
+    private readonly InputAction m_TreadmillControls_Shoot;
+    private readonly InputAction m_TreadmillControls_MousePosition;
     public struct TreadmillControlsActions
     {
         private @PlayerControls m_Wrapper;
         public TreadmillControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_TreadmillControls_Movement;
         public InputAction @Dash => m_Wrapper.m_TreadmillControls_Dash;
+        public InputAction @Shoot => m_Wrapper.m_TreadmillControls_Shoot;
+        public InputAction @MousePosition => m_Wrapper.m_TreadmillControls_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_TreadmillControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -482,6 +526,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dash.started -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
+                @Shoot.started -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnShoot;
+                @MousePosition.started -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_TreadmillControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -492,6 +542,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
@@ -557,6 +613,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
