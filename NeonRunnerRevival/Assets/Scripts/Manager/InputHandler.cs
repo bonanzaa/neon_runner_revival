@@ -5,10 +5,11 @@ using UnityEngine;
 
 namespace NeonRunnerRevival.Assets.Scripts.Manager
 {
+    [RequireComponent(typeof (ScenesManager))]
     class InputHandler : MonoBehaviour
     {
         private PlayerControls _controls;
-        public InputHandler Instance;
+        [NonSerialized] public InputHandler Instance;
         private ScenesManager _sceneManager;
 
         private void Awake()
@@ -22,6 +23,7 @@ namespace NeonRunnerRevival.Assets.Scripts.Manager
                 Destroy(gameObject);
             }
             _controls = new PlayerControls();
+            _sceneManager = GetComponent<ScenesManager>();
         }
 
         private void OnEnable()
