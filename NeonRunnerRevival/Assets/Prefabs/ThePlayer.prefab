@@ -625,7 +625,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5553046704055578213}
         m_TargetAssemblyTypeName: NeonRunnerRevival.Assets.Scripts.Movement.PlayerMovement,
           Assembly-CSharp
         m_MethodName: OnMovement
@@ -660,6 +660,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7a49da74-a1a3-4669-a110-cd666dbcc4f6
     m_ActionName: Menu/Pointer
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 569c57ea-28c9-4724-b739-c7b9c21ba8e9
+    m_ActionName: TreadmillControls/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 470be35a-8d28-4335-a2bb-3778f8a05b05
+    m_ActionName: TreadmillControls/MousePosition[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: TreadmillControls
@@ -719,6 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHp: 0
   _maxHP: 10
+  FireRate: 0.1
 --- !u!50 &5553046704055578232
 Rigidbody2D:
   serializedVersion: 4

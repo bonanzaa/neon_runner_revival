@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NeonRunnerRevival.Assets.Scripts.Manager;
 
 namespace NeonRunnerRevival
 {
     public class TurretRangeDetector : MonoBehaviour
     {
-        public Transform Playerpos;
+
         public float DetectionRange = 10f;
         public bool ExtendedDetectionRange = false;
         public float ForgetRange = 15f;
@@ -14,10 +15,12 @@ namespace NeonRunnerRevival
         private bool _shooting = false;
         private bool _playerInRange = false;
         private float _distance;
+        private Transform _playerPos;
         [SerializeField]
         private GameObject _turret;
 
         private void Start() {
+            _playerPos = PlayerTracker.Instance.transform;
             if(!ExtendedDetectionRange){
                 StartCoroutine(RangeDetection());
             }else{
@@ -26,9 +29,9 @@ namespace NeonRunnerRevival
         }
 
         private IEnumerator RangeDetection(){
-            while(true && Playerpos != null){
+            while(true && _playerPos != null){
 
-                _distance = (Playerpos.position - transform.position).magnitude;
+                _distance = (_playerPos.position - transform.position).magnitude;
                 switch(_distance < DetectionRange){
 
                     case(false):
@@ -55,8 +58,8 @@ namespace NeonRunnerRevival
         }
 
         private IEnumerator ExtendedRangeDetection(){
-            while(true && Playerpos != null){
-                _distance = (Playerpos.position - transform.position).magnitude;
+            while(true && _playerPos != null){
+                _distance = (_playerPos.position - transform.position).magnitude;
 
                 if(_distance < DetectionRange && !_playerInRange){
                     _playerInRange = true;
@@ -88,10 +91,10 @@ namespace NeonRunnerRevival
         private IEnumerator Shooting(){
             print("Shooting");
             // that's where the shooting happens
-            while(_shooting && Playerpos != null){
+            while(_shooting && _playerPos != null){
 
                 // rotating the turret, to face the player
-                Vector2 Direction = Playerpos.position - transform.position;
+                Vector2 Direction = _playerPos.position - transform.position;
                 float angle = Mathf.Atan2(Direction.y, Direction.x);
                 _turret.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle * Mathf.Rad2Deg - 90));
 
