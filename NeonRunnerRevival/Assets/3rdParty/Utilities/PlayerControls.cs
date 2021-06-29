@@ -49,6 +49,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DEBUG_RESET"",
+                    ""type"": ""Button"",
+                    ""id"": ""54187823-7179-44e1-bc35-3da3bc01fa9b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -203,6 +211,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95fdcde0-8cd3-48f7-9d70-cbbe4d3ee462"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DEBUG_RESET"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -444,6 +463,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_TreadmillControls_Dash = m_TreadmillControls.FindAction("Dash", throwIfNotFound: true);
         m_TreadmillControls_Shoot = m_TreadmillControls.FindAction("Shoot", throwIfNotFound: true);
         m_TreadmillControls_MousePosition = m_TreadmillControls.FindAction("MousePosition", throwIfNotFound: true);
+        m_TreadmillControls_DEBUG_RESET = m_TreadmillControls.FindAction("DEBUG_RESET", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_MenuInteractions1 = m_Menu.FindAction("MenuInteractions1", throwIfNotFound: true);
@@ -503,6 +523,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_TreadmillControls_Dash;
     private readonly InputAction m_TreadmillControls_Shoot;
     private readonly InputAction m_TreadmillControls_MousePosition;
+    private readonly InputAction m_TreadmillControls_DEBUG_RESET;
     public struct TreadmillControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -511,6 +532,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Dash => m_Wrapper.m_TreadmillControls_Dash;
         public InputAction @Shoot => m_Wrapper.m_TreadmillControls_Shoot;
         public InputAction @MousePosition => m_Wrapper.m_TreadmillControls_MousePosition;
+        public InputAction @DEBUG_RESET => m_Wrapper.m_TreadmillControls_DEBUG_RESET;
         public InputActionMap Get() { return m_Wrapper.m_TreadmillControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -532,6 +554,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @MousePosition.started -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnMousePosition;
+                @DEBUG_RESET.started -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDEBUG_RESET;
+                @DEBUG_RESET.performed -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDEBUG_RESET;
+                @DEBUG_RESET.canceled -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDEBUG_RESET;
             }
             m_Wrapper.m_TreadmillControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -548,6 +573,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
+                @DEBUG_RESET.started += instance.OnDEBUG_RESET;
+                @DEBUG_RESET.performed += instance.OnDEBUG_RESET;
+                @DEBUG_RESET.canceled += instance.OnDEBUG_RESET;
             }
         }
     }
@@ -615,6 +643,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnDEBUG_RESET(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

@@ -42,7 +42,7 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
 
         private void OnEnable()
         {
-            _controls = GetComponent<PlayerStats>().Controls;
+            _controls = GetComponent<PlayerStats>()._controls;
             _controls.TreadmillControls.Movement.performed += OnMovement;
             _controls.TreadmillControls.Movement.Enable();
 

@@ -7,7 +7,7 @@ namespace NeonRunnerRevival.Assets.Scripts
 {
     class PlayerStats : MonoBehaviour
     {
-        public PlayerControls Controls;
+        public PlayerControls _controls;
         [SerializeField]
         private int _currentHp;
         [SerializeField]
@@ -16,7 +16,7 @@ namespace NeonRunnerRevival.Assets.Scripts
 
 
         private void OnEnable() {
-            Controls = new PlayerControls();
+            _controls = new PlayerControls();
         }
 
         private void Start()
