@@ -1,7 +1,9 @@
-﻿using System;
+﻿using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace NeonRunnerRevival.Assets.Scripts.Manager.LvlGen
 {
@@ -18,22 +20,22 @@ namespace NeonRunnerRevival.Assets.Scripts.Manager.LvlGen
         [SerializeField]
         private int _preSpawnLevelParts = 4;
 
-        //private List<LevelSection> _generatedSectionsLog;
+        private List<LevelSection> _generatedSectionsLog;
 
         private Vector3 _lastEndPos;
 
         private void Awake()
         {
-            //Setup();
+            Setup();
         }
         private void Update()
         {
             if (Vector3.Distance(_chaser.position, _lastEndPos) < MIN_DISTANCE_TO_SPAWN_TRIGGER)   // Spawn new Section when Chaser is close enough
             {
-                //SpawnLevelPart(RandomIndex(_levelPartList));
+                SpawnLevelPart(RandomIndex(_levelPartList));
             }
         }
-/*
+
         private void SpawnLevelPart(int index)
         {
             Transform selectedSectionPrefab = _levelPartList[index];                                     // Select next Section from list 
@@ -61,16 +63,6 @@ namespace NeonRunnerRevival.Assets.Scripts.Manager.LvlGen
             }
         }
 
-        private void LogCheck()
-        {
-            if (Application.isEditor)                                               // if using the button to spawn in editor, add spawned sections to log
-            {
-                if (_generatedSectionsLog.Count > 0)                                // if parts already generated, regenrate parts
-                {
-                    EditorReset();
-                }
-            }
-        } // check if section log exists on Generate Call
 
         private int RandomIndex(List<Transform> list)
         {
@@ -83,22 +75,26 @@ namespace NeonRunnerRevival.Assets.Scripts.Manager.LvlGen
         private void Setup()
         {
             _lastEndPos = _lvlStartSection.Find("EndPos").position;                 // anchor LastEndPos to Lvl_Start Section (Section must be active in scene)
-            LogCheck();
+            ResetLog();
             Prespawn(_preSpawnLevelParts);                                          // prespwn initial lvl parts
         }   // gets lvl start position and spawns an amount of sections (can be called in editor with button)
 
         [Button("Reset", EButtonEnableMode.Editor)]
-        private void EditorReset() // if section log is not empty, destroys logged sections and clears list
+        private void ResetLog()
         {
-            if (_generatedSectionsLog.Count > 0)
+            if (Application.isEditor)                                               // if using the button to spawn in editor, add spawned sections to log
             {
-                for (int i = 0; i < _generatedSectionsLog.Count; i++)
+                if (_generatedSectionsLog.Count > 0)                                // if parts already generated, regenrate parts
                 {
-                    DestroyImmediate(_generatedSectionsLog[i].gameObject);
+                    for (int i = 0; i < _generatedSectionsLog.Count; i++)
+                    {
+                        DestroyImmediate(_generatedSectionsLog[i].gameObject);
+                    }
                 }
+                _generatedSectionsLog.Clear();
             }
-            _generatedSectionsLog.Clear();
-        }
-*/
+        } // check if section log exists on Generate Call
+        
+
     }
 }

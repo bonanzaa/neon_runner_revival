@@ -11,7 +11,7 @@ namespace NeonRunnerRevival.Assets.Scripts.Manager.LvlGen
     [Serializable]
     struct Chunk
     {
-        public string name;
+        public string Name;
         //[Range(0, 5f)]
         //public float chaserSpeed; // TODO : implement chaser speed changes to lvl gen manager
         public List<LevelSection> sections;
@@ -21,7 +21,7 @@ namespace NeonRunnerRevival.Assets.Scripts.Manager.LvlGen
             int listCount = sections.Count;
             while (listCount > 1)
             {
-                int k = FlexUtils.RandInt(0, listCount - 1);
+                int k = UnityEngine.Random.Range(0, listCount);
                 listCount--;
                 LevelSection temp = sections[listCount];
                 sections[listCount] = sections[k];
