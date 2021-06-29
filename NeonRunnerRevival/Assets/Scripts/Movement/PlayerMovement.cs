@@ -105,25 +105,25 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
             yield break;
         }
 
-        private void SetSpeed(float value)
+        public void SetSpeed(float value)
         {
             _speed = value;
         }
 
-        private void AddSpeed(float value){
+        public void AddSpeed(float value){
             _speed += value;
         }
 
-        private void RemoveSpeed(float value){
+        public void RemoveSpeed(float value){
             _speed -= value;
         }
 
-        private void IncreasePercentSpeed(float percent){
+        public void IncreasePercentSpeed(float percent){
             float additionalValue = percent * _speed / 100f;
             _speed += additionalValue;
         }
 
-        private void DecreasePercentSpeed(float percent){
+        public void DecreasePercentSpeed(float percent){
             float additionalValue = percent * _speed / 100f;
             _speed -= additionalValue;
         }
