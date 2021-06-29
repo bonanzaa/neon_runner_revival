@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeonRunnerRevival.Assets.Scripts.Manager;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,14 +14,14 @@ namespace NeonRunnerRevival.Assets.Scripts
         //[SerializeField][Range(0.1f, 3f)]    private float _maxSpeedUp = 2;
         //[SerializeField][Range(0.01f, 0.5f)] private float _speedUpIncrement = 0.02f;
 
-        private float _speedUp = 0f;
+        //private float _speedUp = 0f;
 
         [SerializeField]
         private bool _canMove = false;
 
         private void Start()
         {
-            _speedUp = 0;
+            //_speedUp = 0;
             //SetCanMove(true);
             _playerPosition = PlayerTracker.Instance.Player.transform;
         }
@@ -32,7 +33,7 @@ namespace NeonRunnerRevival.Assets.Scripts
 
         private void TrackPlayer()
         {
-            Vector3 direction = new Vector3(0, _crawlSpeed * _speedUp + 1, 0);
+            Vector3 direction = new Vector3(0, _crawlSpeed + 1, 0);
             if (_canMove == true)
             {
                 transform.Translate(direction * Time.deltaTime);
