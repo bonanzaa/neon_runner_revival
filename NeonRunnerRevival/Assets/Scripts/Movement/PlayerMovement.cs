@@ -12,6 +12,9 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
         
         [SerializeField] private float _speed;
         private Rigidbody2D rb;
+        private PlayerStats _playerStats;
+        private Camera _mainCamera;
+        private Vector2 _mousePos;
         private bool _canDash = true;
         [NonSerialized]
         public bool Dashing = false;
@@ -21,6 +24,11 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
 
         private void Start() {
             rb = GetComponent<Rigidbody2D>();
+            _mainCamera = Camera.main;
+        }
+
+        private void Update() {
+            MouseRotate();
         }
 
         private void FixedUpdate() {
@@ -34,12 +42,15 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
 
         private void OnEnable()
         {
-            _controls = new PlayerControls();
+            _controls = GetComponent<PlayerStats>().Controls;
             _controls.TreadmillControls.Movement.performed += OnMovement;
             _controls.TreadmillControls.Movement.Enable();
 
             _controls.TreadmillControls.Dash.performed += OnDash;
             _controls.TreadmillControls.Dash.Enable();
+
+            _controls.TreadmillControls.MousePosition.performed += OnMousePosition;
+            _controls.TreadmillControls.MousePosition.Enable();
         }
         private void OnDisable()
         {
@@ -48,6 +59,9 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
 
             _controls.TreadmillControls.Dash.performed -= OnDash;
             _controls.TreadmillControls.Dash.Disable();
+
+            _controls.TreadmillControls.MousePosition.performed -= OnMousePosition;
+            _controls.TreadmillControls.MousePosition.Disable();
         }
 
         public void OnMovement(UnityEngine.InputSystem.InputAction.CallbackContext context)
@@ -57,15 +71,34 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
             //Debug.Log($"movement detected in {_rawMovementInput} direction");
         }
 
+
+
         public void OnDash(UnityEngine.InputSystem.InputAction.CallbackContext context){
             if(_canDash && Dashing == false){ 
                 // takes the direction from the movement
                 Dash(_rawMovementInput);
             }
         }
+
+        public void OnMousePosition(UnityEngine.InputSystem.InputAction.CallbackContext context){
+            _mousePos = context.ReadValue<Vector2>();
+        }
         private void Move()
         {
             transform.position += _rawMovementInput * _speed * Time.deltaTime;
+        }
+
+        private void MouseRotate(){
+            
+            Vector3 mouseWorldSpace = _mainCamera.ScreenToWorldPoint(_mousePos);
+
+            Vector3 direction = mouseWorldSpace - transform.position;
+
+
+            float angle = Mathf.Atan2(direction.y, direction.x); // in radians
+            transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg - 90);
+
+            //direction.z = 0;
         }
 
         private void Dash(Vector2 direction){
