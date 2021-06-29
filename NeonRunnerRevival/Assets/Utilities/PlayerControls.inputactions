@@ -20,6 +20,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Utilities",
+                    "type": "Button",
+                    "id": "4f28d920-e9c0-4269-9568-5a739e3d6d6a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -152,6 +160,44 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6bd26276-75f5-4895-8a92-a24e38b747ee",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Utilities",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menu",
+            "id": "7c4a8bb7-8214-4f61-aa6e-912a7510811a",
+            "actions": [
+                {
+                    "name": "MenuInteractions1",
+                    "type": "Button",
+                    "id": "9f40d608-8711-4f79-afaf-09a3cc179db2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a58ff18b-af08-45a1-b243-95904a3c1d04",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuInteractions1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

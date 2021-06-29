@@ -33,6 +33,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Utilities"",
+                    ""type"": ""Button"",
+                    ""id"": ""4f28d920-e9c0-4269-9568-5a739e3d6d6a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -167,6 +175,44 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bd26276-75f5-4895-8a92-a24e38b747ee"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Utilities"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""7c4a8bb7-8214-4f61-aa6e-912a7510811a"",
+            ""actions"": [
+                {
+                    ""name"": ""MenuInteractions1"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f40d608-8711-4f79-afaf-09a3cc179db2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a58ff18b-af08-45a1-b243-95904a3c1d04"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuInteractions1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -177,6 +223,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_TreadmillControls = asset.FindActionMap("TreadmillControls", throwIfNotFound: true);
         m_TreadmillControls_Movement = m_TreadmillControls.FindAction("Movement", throwIfNotFound: true);
         m_TreadmillControls_Dash = m_TreadmillControls.FindAction("Dash", throwIfNotFound: true);
+        m_TreadmillControls_Utilities = m_TreadmillControls.FindAction("Utilities", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_MenuInteractions1 = m_Menu.FindAction("MenuInteractions1", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -228,12 +278,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private ITreadmillControlsActions m_TreadmillControlsActionsCallbackInterface;
     private readonly InputAction m_TreadmillControls_Movement;
     private readonly InputAction m_TreadmillControls_Dash;
+    private readonly InputAction m_TreadmillControls_Utilities;
     public struct TreadmillControlsActions
     {
         private @PlayerControls m_Wrapper;
         public TreadmillControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_TreadmillControls_Movement;
         public InputAction @Dash => m_Wrapper.m_TreadmillControls_Dash;
+        public InputAction @Utilities => m_Wrapper.m_TreadmillControls_Utilities;
         public InputActionMap Get() { return m_Wrapper.m_TreadmillControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -249,6 +301,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dash.started -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
+                @Utilities.started -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnUtilities;
+                @Utilities.performed -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnUtilities;
+                @Utilities.canceled -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnUtilities;
             }
             m_Wrapper.m_TreadmillControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -259,13 +314,54 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Utilities.started += instance.OnUtilities;
+                @Utilities.performed += instance.OnUtilities;
+                @Utilities.canceled += instance.OnUtilities;
             }
         }
     }
     public TreadmillControlsActions @TreadmillControls => new TreadmillControlsActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_MenuInteractions1;
+    public struct MenuActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MenuInteractions1 => m_Wrapper.m_Menu_MenuInteractions1;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @MenuInteractions1.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnMenuInteractions1;
+                @MenuInteractions1.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnMenuInteractions1;
+                @MenuInteractions1.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnMenuInteractions1;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MenuInteractions1.started += instance.OnMenuInteractions1;
+                @MenuInteractions1.performed += instance.OnMenuInteractions1;
+                @MenuInteractions1.canceled += instance.OnMenuInteractions1;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface ITreadmillControlsActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnUtilities(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnMenuInteractions1(InputAction.CallbackContext context);
     }
 }
