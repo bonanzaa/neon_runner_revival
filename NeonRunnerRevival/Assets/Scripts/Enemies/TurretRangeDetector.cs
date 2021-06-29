@@ -85,10 +85,10 @@ namespace NeonRunnerRevival
 
         private IEnumerator Shooting(){
             print("Shooting");
-            // instantiate bullets
-            // rotate turret to the player
+            // that's where the shooting happens
             while(_shooting && Playerpos != null){
-                
+
+                // rotating the turret, to face the player
                 Vector2 Direction = Playerpos.position - transform.position;
                 float angle = Mathf.Atan2(Direction.y, Direction.x);
                 transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle * Mathf.Rad2Deg - 90));

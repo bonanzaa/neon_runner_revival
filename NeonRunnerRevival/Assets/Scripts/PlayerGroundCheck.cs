@@ -41,6 +41,7 @@ namespace NeonRunnerRevival
             }
             if(!Grounded)
             Destroy(this.gameObject);
+            yield break;
         }
     }
 }
