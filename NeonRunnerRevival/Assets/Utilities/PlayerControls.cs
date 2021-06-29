@@ -33,14 +33,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""Utilities"",
-                    ""type"": ""Button"",
-                    ""id"": ""4f28d920-e9c0-4269-9568-5a739e3d6d6a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -175,17 +167,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6bd26276-75f5-4895-8a92-a24e38b747ee"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Utilities"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -197,6 +178,30 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""MenuInteractions1"",
                     ""type"": ""Button"",
                     ""id"": ""9f40d608-8711-4f79-afaf-09a3cc179db2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Navigation"",
+                    ""type"": ""Value"",
+                    ""id"": ""a2deec31-920b-48ca-8484-b713d8c1e046"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""EnterKeys"",
+                    ""type"": ""Button"",
+                    ""id"": ""064caa80-93c1-42cd-9edf-4880c8ed480b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pointer"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a49da74-a1a3-4669-a110-cd666dbcc4f6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -213,6 +218,182 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""MenuInteractions1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a4f8e90-6fae-4f3c-9dcf-37c4b4160779"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuInteractions1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""ab9f864c-bf8f-427b-bd8e-bc81bd2d7bbf"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""30668918-40d3-4fea-8c4a-3fdf1c1e9b53"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""05828f87-e6b5-4105-a1cf-30775ad58807"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""4e6e5a71-1f1b-4dd3-9a95-5d8d74307415"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""a5e47313-477c-49f7-a2ec-3ad9ec859b3b"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""ArrowKeys"",
+                    ""id"": ""74c1d80e-fcfd-44fc-b4aa-c2a425c6f970"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""77b02483-fcef-4f6a-b9eb-91666584a294"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""d9d2465c-9af4-444e-b3cd-253c7fbcb7bd"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""c7ef371b-30cf-492c-8926-5c84a4b0fcac"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""d78a6220-f987-4fad-8fe3-c41b337eeb84"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5429cba-99c9-4774-9fb7-b556337f7a66"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EnterKeys"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8f3fd4f-4787-408e-ac53-818161fd83f1"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EnterKeys"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0bd2fc6-981a-424b-9d12-ad8d6a4e41e4"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EnterKeys"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7cbf148-2776-43eb-b0b9-8f0d88a649af"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EnterKeys"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f29568c2-0e46-43ce-a968-2d050962bd71"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pointer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -223,10 +404,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_TreadmillControls = asset.FindActionMap("TreadmillControls", throwIfNotFound: true);
         m_TreadmillControls_Movement = m_TreadmillControls.FindAction("Movement", throwIfNotFound: true);
         m_TreadmillControls_Dash = m_TreadmillControls.FindAction("Dash", throwIfNotFound: true);
-        m_TreadmillControls_Utilities = m_TreadmillControls.FindAction("Utilities", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_MenuInteractions1 = m_Menu.FindAction("MenuInteractions1", throwIfNotFound: true);
+        m_Menu_Navigation = m_Menu.FindAction("Navigation", throwIfNotFound: true);
+        m_Menu_EnterKeys = m_Menu.FindAction("EnterKeys", throwIfNotFound: true);
+        m_Menu_Pointer = m_Menu.FindAction("Pointer", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -278,14 +461,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private ITreadmillControlsActions m_TreadmillControlsActionsCallbackInterface;
     private readonly InputAction m_TreadmillControls_Movement;
     private readonly InputAction m_TreadmillControls_Dash;
-    private readonly InputAction m_TreadmillControls_Utilities;
     public struct TreadmillControlsActions
     {
         private @PlayerControls m_Wrapper;
         public TreadmillControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_TreadmillControls_Movement;
         public InputAction @Dash => m_Wrapper.m_TreadmillControls_Dash;
-        public InputAction @Utilities => m_Wrapper.m_TreadmillControls_Utilities;
         public InputActionMap Get() { return m_Wrapper.m_TreadmillControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -301,9 +482,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dash.started -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnDash;
-                @Utilities.started -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnUtilities;
-                @Utilities.performed -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnUtilities;
-                @Utilities.canceled -= m_Wrapper.m_TreadmillControlsActionsCallbackInterface.OnUtilities;
             }
             m_Wrapper.m_TreadmillControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -314,9 +492,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
-                @Utilities.started += instance.OnUtilities;
-                @Utilities.performed += instance.OnUtilities;
-                @Utilities.canceled += instance.OnUtilities;
             }
         }
     }
@@ -326,11 +501,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Menu;
     private IMenuActions m_MenuActionsCallbackInterface;
     private readonly InputAction m_Menu_MenuInteractions1;
+    private readonly InputAction m_Menu_Navigation;
+    private readonly InputAction m_Menu_EnterKeys;
+    private readonly InputAction m_Menu_Pointer;
     public struct MenuActions
     {
         private @PlayerControls m_Wrapper;
         public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @MenuInteractions1 => m_Wrapper.m_Menu_MenuInteractions1;
+        public InputAction @Navigation => m_Wrapper.m_Menu_Navigation;
+        public InputAction @EnterKeys => m_Wrapper.m_Menu_EnterKeys;
+        public InputAction @Pointer => m_Wrapper.m_Menu_Pointer;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -343,6 +524,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @MenuInteractions1.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnMenuInteractions1;
                 @MenuInteractions1.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnMenuInteractions1;
                 @MenuInteractions1.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnMenuInteractions1;
+                @Navigation.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnNavigation;
+                @Navigation.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnNavigation;
+                @Navigation.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnNavigation;
+                @EnterKeys.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnEnterKeys;
+                @EnterKeys.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnEnterKeys;
+                @EnterKeys.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnEnterKeys;
+                @Pointer.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnPointer;
+                @Pointer.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnPointer;
+                @Pointer.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnPointer;
             }
             m_Wrapper.m_MenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -350,6 +540,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @MenuInteractions1.started += instance.OnMenuInteractions1;
                 @MenuInteractions1.performed += instance.OnMenuInteractions1;
                 @MenuInteractions1.canceled += instance.OnMenuInteractions1;
+                @Navigation.started += instance.OnNavigation;
+                @Navigation.performed += instance.OnNavigation;
+                @Navigation.canceled += instance.OnNavigation;
+                @EnterKeys.started += instance.OnEnterKeys;
+                @EnterKeys.performed += instance.OnEnterKeys;
+                @EnterKeys.canceled += instance.OnEnterKeys;
+                @Pointer.started += instance.OnPointer;
+                @Pointer.performed += instance.OnPointer;
+                @Pointer.canceled += instance.OnPointer;
             }
         }
     }
@@ -358,10 +557,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
-        void OnUtilities(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
         void OnMenuInteractions1(InputAction.CallbackContext context);
+        void OnNavigation(InputAction.CallbackContext context);
+        void OnEnterKeys(InputAction.CallbackContext context);
+        void OnPointer(InputAction.CallbackContext context);
     }
 }

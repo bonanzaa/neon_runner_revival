@@ -15,13 +15,13 @@ namespace NeonRunnerRevival
         private void OnEnable()
         {
             _controls = new PlayerControls();
-            _controls.TreadmillControls.Utilities.performed += OnMenuOpened;
-            _controls.TreadmillControls.Utilities.Enable();
+            _controls.Menu.MenuInteractions1.performed += OnMenuOpened;
+            _controls.Menu.MenuInteractions1.Enable();
         }
         private void OnDisable()
         {
-            _controls.TreadmillControls.Utilities.performed -= OnMenuOpened;
-            _controls.TreadmillControls.Utilities.Disable();
+            _controls.Menu.MenuInteractions1.performed -= OnMenuOpened;
+            _controls.Menu.MenuInteractions1.Disable();
         }
         private void OnMenuOpened(UnityEngine.InputSystem.InputAction.CallbackContext context)
         {               
