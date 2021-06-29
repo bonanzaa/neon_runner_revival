@@ -567,9 +567,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5553046704055578212}
-  - component: {fileID: 5553046704055578213}
   - component: {fileID: 5553046704055578234}
+  - component: {fileID: 5553046704055578213}
   - component: {fileID: 5553046704055578235}
+  - component: {fileID: 4929720632411438869}
+  - component: {fileID: 6848120060296561854}
   - component: {fileID: 5553046704055578232}
   - component: {fileID: 5553046704055578233}
   m_Layer: 0
@@ -596,21 +598,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5553046704055578213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5553046704055578238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2003ddae5b9798b4785faf84dfc0a9bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 12.18
-  DashCooldown: 0.1
-  DashDistance: 50
 --- !u!114 &5553046704055578234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -659,17 +646,40 @@ MonoBehaviour:
     m_ActionName: TreadmillControls/Dash[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 4f28d920-e9c0-4269-9568-5a739e3d6d6a
-    m_ActionName: TreadmillControls/Utilities[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 9f40d608-8711-4f79-afaf-09a3cc179db2
     m_ActionName: Menu/MenuInteractions1[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a2deec31-920b-48ca-8484-b713d8c1e046
+    m_ActionName: Menu/Navigation[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 064caa80-93c1-42cd-9edf-4880c8ed480b
+    m_ActionName: Menu/EnterKeys[/Keyboard/enter,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7a49da74-a1a3-4669-a110-cd666dbcc4f6
+    m_ActionName: Menu/Pointer
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: TreadmillControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5553046704055578213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553046704055578238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2003ddae5b9798b4785faf84dfc0a9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 12.18
+  DashCooldown: 0.1
+  DashDistance: 50
 --- !u!114 &5553046704055578235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,6 +693,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grounded: 1
+--- !u!114 &4929720632411438869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553046704055578238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2803ab0afa410eb4da4be571bda96fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6848120060296561854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553046704055578238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929a0d06dd63952448c5763717fe6762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHp: 0
+  _maxHP: 10
 --- !u!50 &5553046704055578232
 Rigidbody2D:
   serializedVersion: 4
