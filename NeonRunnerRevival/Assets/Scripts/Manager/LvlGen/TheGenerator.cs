@@ -18,22 +18,22 @@ namespace NeonRunnerRevival.Assets.Scripts.Manager.LvlGen
         [SerializeField]
         private int _preSpawnLevelParts = 4;
 
-        private List<LevelSection> _generatedSectionsLog;
+        //private List<LevelSection> _generatedSectionsLog;
 
         private Vector3 _lastEndPos;
 
         private void Awake()
         {
-            Setup();
+            //Setup();
         }
         private void Update()
         {
             if (Vector3.Distance(_chaser.position, _lastEndPos) < MIN_DISTANCE_TO_SPAWN_TRIGGER)   // Spawn new Section when Chaser is close enough
             {
-                SpawnLevelPart(RandomIndex(_levelPartList));
+                //SpawnLevelPart(RandomIndex(_levelPartList));
             }
         }
-
+/*
         private void SpawnLevelPart(int index)
         {
             Transform selectedSectionPrefab = _levelPartList[index];                                     // Select next Section from list 
@@ -99,6 +99,6 @@ namespace NeonRunnerRevival.Assets.Scripts.Manager.LvlGen
             }
             _generatedSectionsLog.Clear();
         }
-
+*/
     }
 }
