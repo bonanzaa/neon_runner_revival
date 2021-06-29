@@ -31,7 +31,8 @@ namespace NeonRunnerRevival
 
 
         private void OnEnable() {
-            _controls = GetComponent<PlayerStats>().Controls;
+            _controls = new PlayerControls();
+            //_controls = GetComponent<PlayerStats>().Controls;
             _controls.TreadmillControls.Shoot.performed += OnShoot;
             _controls.TreadmillControls.Shoot.Enable();
         }

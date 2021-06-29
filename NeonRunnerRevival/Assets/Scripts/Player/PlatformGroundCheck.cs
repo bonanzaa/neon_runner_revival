@@ -6,10 +6,10 @@ namespace NeonRunnerRevival
 {
     public class PlatformGroundCheck : MonoBehaviour
     {
-     private PlayerGroundCheck player;
+     public PlayerGroundCheck player;
 
      private void Start() {
-         player = PlayerTracker.Instance.GetComponent<PlayerGroundCheck>();
+         player = PlayerTracker.Instance.Player.GetComponent<PlayerGroundCheck>();
      }
         private void OnTriggerExit2D(Collider2D other) {
             if(other.CompareTag("Player")){
