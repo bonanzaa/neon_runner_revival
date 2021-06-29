@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeonRunnerRevival.Assets.Scripts.Manager;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace NeonRunnerRevival.Assets.Scripts
 {
     class PlayerStats : MonoBehaviour
     {
+        private InputHandler _inputHandler;
         public PlayerControls _controls;
         [SerializeField]
         private int _currentHp;
@@ -16,7 +18,8 @@ namespace NeonRunnerRevival.Assets.Scripts
 
 
         private void OnEnable() {
-            _controls = new PlayerControls();
+            _inputHandler = FindObjectOfType<InputHandler>();
+            _controls = _inputHandler.Instance.GetInputReference();
         }
 
         private void Start()
