@@ -8,15 +8,17 @@ namespace NeonRunnerRevival
     {
         public Transform Playerpos;
         public float DetectionRange = 10f;
-        public bool ExtendedRange = false;
+        public bool ExtendedDetectionRange = false;
         public float ForgetRange = 15f;
         private bool _searching = false;
         private bool _shooting = false;
         private bool _playerInRange = false;
         private float _distance;
+        [SerializeField]
+        private GameObject _turret;
 
         private void Start() {
-            if(!ExtendedRange){
+            if(!ExtendedDetectionRange){
                 StartCoroutine(RangeDetection());
             }else{
                 StartCoroutine(ExtendedRangeDetection());
@@ -24,7 +26,7 @@ namespace NeonRunnerRevival
         }
 
         private IEnumerator RangeDetection(){
-            while(true){
+            while(true && Playerpos != null){
 
                 _distance = (Playerpos.position - transform.position).magnitude;
                 switch(_distance < DetectionRange){
@@ -91,7 +93,7 @@ namespace NeonRunnerRevival
                 // rotating the turret, to face the player
                 Vector2 Direction = Playerpos.position - transform.position;
                 float angle = Mathf.Atan2(Direction.y, Direction.x);
-                transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle * Mathf.Rad2Deg - 90));
+                _turret.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle * Mathf.Rad2Deg - 90));
 
                 yield return new WaitForSeconds(Time.deltaTime);
             }
@@ -104,7 +106,7 @@ namespace NeonRunnerRevival
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, DetectionRange);
             
-            if(ExtendedRange){
+            if(ExtendedDetectionRange){
                 Gizmos.color = Color.green;
                 Gizmos.DrawWireSphere(transform.position, ForgetRange);
             }

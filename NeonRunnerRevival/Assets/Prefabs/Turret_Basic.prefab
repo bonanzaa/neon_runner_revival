@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1376867129196916572}
   - component: {fileID: 7934797682792843908}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1353910751
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.23584908, g: 0.030037384, b: 0.030037384, a: 1}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5522996501986549197}
   - component: {fileID: 3626923786005238068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1353910751
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 4
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.3952278, g: 0.38247597, b: 0.4245283, a: 1}
@@ -177,7 +177,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4297090069826796806}
-  m_Layer: 0
+  - component: {fileID: 1881317670}
+  m_Layer: 6
   m_Name: Turret_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,6 +201,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1881317670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155752601566058417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9971400678ef1734d9cec02a9530ceb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playerpos: {fileID: 0}
+  DetectionRange: 10
+  ExtendedDetectionRange: 0
+  ForgetRange: 12.7
+  _turret: {fileID: 3837741149651349595}
 --- !u!1 &3211565232791513085
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 384202013543739176}
   - component: {fileID: 4169300354827119580}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TurretBaseHL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +287,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1353910751
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.01886791, g: 0.014328931, b: 0.014328931, a: 0.12941177}
@@ -292,7 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4921870102788136098}
   - component: {fileID: 2666309516238328435}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +371,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1353910751
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.41509432, g: 0.2917408, b: 0.2917408, a: 1}
@@ -375,7 +393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2775848531552275863}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -406,7 +424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7225995856586357145}
   - component: {fileID: 4546344401721353543}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunHL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +483,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1353910751
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 0, b: 0.039559364, a: 1}
@@ -488,7 +506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 712963375404166715}
   - component: {fileID: 3746841630970973598}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BaseHL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +565,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1353910751
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.46226418, g: 0.09376113, b: 0.09376113, a: 1}
@@ -570,7 +588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4198291662027484084}
   - component: {fileID: 1264283845668260707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TurretBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +648,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1353910751
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.5754717, g: 0.08957815, b: 0.08957815, a: 1}
@@ -653,7 +671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2060621408700684712}
   - component: {fileID: 8519945373143656595}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +730,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1353910751
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 0.49803922}
