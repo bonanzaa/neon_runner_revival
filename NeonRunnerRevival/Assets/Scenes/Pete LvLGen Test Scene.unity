@@ -254,18 +254,18 @@ MonoBehaviour:
   _level:
   - Name: Test1
     sections:
+    - {fileID: 4557190030020472935, guid: 41b1d97643fd8c840b15545962dc8249, type: 3}
     - {fileID: 816449719}
-    - {fileID: 816449719}
-    - {fileID: 816449719}
-    - {fileID: 816449719}
-    - {fileID: 816449719}
+    - {fileID: 4557190030020472935, guid: c16408aa0a8c7a8438cdc595553e157c, type: 3}
+    - {fileID: 7069434451846607028, guid: c582cc2aa0b18da40ba28ca5f85327d5, type: 3}
+    - {fileID: 672027922612113155, guid: 233c02a016bdaf94aa66565c5bd1c43d, type: 3}
   - Name: Test2
     sections:
-    - {fileID: 816449719}
-    - {fileID: 816449719}
-    - {fileID: 816449719}
-    - {fileID: 816449719}
-    - {fileID: 816449719}
+    - {fileID: 7069434451846607028, guid: c582cc2aa0b18da40ba28ca5f85327d5, type: 3}
+    - {fileID: 4557190030020472935, guid: c16408aa0a8c7a8438cdc595553e157c, type: 3}
+    - {fileID: 4557190030020472935, guid: 41b1d97643fd8c840b15545962dc8249, type: 3}
+    - {fileID: 672027922612113155, guid: 233c02a016bdaf94aa66565c5bd1c43d, type: 3}
+    - {fileID: 672027922612113155, guid: 233c02a016bdaf94aa66565c5bd1c43d, type: 3}
   _chunkIndex: 0
   _sectionIndex: 0
 --- !u!4 &917737039
