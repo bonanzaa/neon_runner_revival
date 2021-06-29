@@ -17,7 +17,7 @@ namespace NeonRunnerRevival
         }
 
         public void PlayerFalling(){
-            if(Grounded == false){
+            if(!Grounded){
                 StartCoroutine(GroundCheck());
             }
         }
@@ -26,9 +26,9 @@ namespace NeonRunnerRevival
             float timer = 0f;
 
             if(_playerMovement.Dashing){
-                _timeToDie = 0.15f;
+                _timeToDie = 0.2f;
             }else{
-                _timeToDie = 0.01f;
+                print("Player DIED!!!");
             }
 
             while(timer < _timeToDie){
@@ -40,7 +40,8 @@ namespace NeonRunnerRevival
                 }
             }
             if(!Grounded)
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+                print("PLAYE HAS DIED!!!");
             yield break;
         }
     }

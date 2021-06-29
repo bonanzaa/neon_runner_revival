@@ -33,15 +33,17 @@ namespace NeonRunnerRevival.Assets.Scripts
 
         private void TrackPlayer()
         {
-            Vector3 direction = new Vector3(0, _crawlSpeed + 1, 0);
-            if (_canMove == true)
-            {
-                transform.Translate(direction * Time.deltaTime);
-            }
-            if (_playerPosition.transform.position.y > transform.position.y)
-            {
-                transform.position = new Vector3(0, _playerPosition.position.y, 0);
-                //IncrementSpeed();
+            if(_playerPosition != null){
+                Vector3 direction = new Vector3(0, _crawlSpeed + 1, 0);
+                if (_canMove == true)
+                {
+                    transform.Translate(direction * Time.deltaTime);
+                }
+                if (_playerPosition.transform.position.y > transform.position.y)
+                {
+                    transform.position = new Vector3(0, _playerPosition.position.y, 0);
+                    //IncrementSpeed();
+                }
             }
         }
 
