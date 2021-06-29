@@ -22,7 +22,7 @@ namespace NeonRunnerRevival.Assets.Scripts
         private void Start()
         {
             //_speedUp = 0;
-            //SetCanMove(true);
+            SetCanMove(true);
             _playerPosition = PlayerTracker.Instance.Player.transform;
         }
 
