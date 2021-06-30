@@ -43,7 +43,7 @@ namespace NeonRunnerRevival.Assets.Scripts.Manager
 
         public void OnDebugReset(UnityEngine.InputSystem.InputAction.CallbackContext context)
         {
-            _sceneManager.ResetScene(_sceneManager.GetCurrentSceneIndex());
+            _sceneManager.ReloadScene();
         }
     }
 }

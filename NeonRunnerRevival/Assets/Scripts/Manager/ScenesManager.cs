@@ -12,14 +12,18 @@ namespace NeonRunnerRevival
             int index = SceneManager.GetActiveScene().buildIndex;
             return index;
         }
-        public void ResetScene(int index)
+        public void LoadScene(int index)
         {
-            SceneManager.LoadScene(GetCurrentSceneIndex());
+            SceneManager.LoadScene(index);
         }
         public void QuitGame()
         {
             Debug.Log("Quitting Game");
             Application.Quit();
+        }
+        public void ReloadScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

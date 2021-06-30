@@ -35,7 +35,7 @@ namespace NeonRunnerRevival
         }
         public void ReloadScene()
         {
-            _scenesManager.ResetScene(_scenesManager.GetCurrentSceneIndex());
+            _scenesManager.LoadScene(_scenesManager.GetCurrentSceneIndex());
             Debug.Log("You're reloading");
         }
         public void QuitGame()
