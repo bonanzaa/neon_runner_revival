@@ -248,7 +248,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""EnterKeys"",
+                    ""name"": ""Click"",
                     ""type"": ""Button"",
                     ""id"": ""064caa80-93c1-42cd-9edf-4880c8ed480b"",
                     ""expectedControlType"": ""Button"",
@@ -399,12 +399,34 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""4500f900-8868-4cc9-a54d-fd16edafe110"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb1fdabf-808a-405d-b1ff-ee4455f1162b"",
+                    ""path"": ""<AndroidJoystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d5429cba-99c9-4774-9fb7-b556337f7a66"",
                     ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnterKeys"",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -415,7 +437,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnterKeys"",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -426,7 +448,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnterKeys"",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -437,7 +459,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnterKeys"",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -468,7 +490,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_MenuInteractions1 = m_Menu.FindAction("MenuInteractions1", throwIfNotFound: true);
         m_Menu_Navigation = m_Menu.FindAction("Navigation", throwIfNotFound: true);
-        m_Menu_EnterKeys = m_Menu.FindAction("EnterKeys", throwIfNotFound: true);
+        m_Menu_Click = m_Menu.FindAction("Click", throwIfNotFound: true);
         m_Menu_Pointer = m_Menu.FindAction("Pointer", throwIfNotFound: true);
     }
 
@@ -586,7 +608,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private IMenuActions m_MenuActionsCallbackInterface;
     private readonly InputAction m_Menu_MenuInteractions1;
     private readonly InputAction m_Menu_Navigation;
-    private readonly InputAction m_Menu_EnterKeys;
+    private readonly InputAction m_Menu_Click;
     private readonly InputAction m_Menu_Pointer;
     public struct MenuActions
     {
@@ -594,7 +616,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @MenuInteractions1 => m_Wrapper.m_Menu_MenuInteractions1;
         public InputAction @Navigation => m_Wrapper.m_Menu_Navigation;
-        public InputAction @EnterKeys => m_Wrapper.m_Menu_EnterKeys;
+        public InputAction @Click => m_Wrapper.m_Menu_Click;
         public InputAction @Pointer => m_Wrapper.m_Menu_Pointer;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
@@ -611,9 +633,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Navigation.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnNavigation;
                 @Navigation.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnNavigation;
                 @Navigation.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnNavigation;
-                @EnterKeys.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnEnterKeys;
-                @EnterKeys.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnEnterKeys;
-                @EnterKeys.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnEnterKeys;
+                @Click.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnClick;
+                @Click.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnClick;
+                @Click.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnClick;
                 @Pointer.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnPointer;
                 @Pointer.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnPointer;
                 @Pointer.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnPointer;
@@ -627,9 +649,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Navigation.started += instance.OnNavigation;
                 @Navigation.performed += instance.OnNavigation;
                 @Navigation.canceled += instance.OnNavigation;
-                @EnterKeys.started += instance.OnEnterKeys;
-                @EnterKeys.performed += instance.OnEnterKeys;
-                @EnterKeys.canceled += instance.OnEnterKeys;
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
                 @Pointer.started += instance.OnPointer;
                 @Pointer.performed += instance.OnPointer;
                 @Pointer.canceled += instance.OnPointer;
@@ -649,7 +671,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnMenuInteractions1(InputAction.CallbackContext context);
         void OnNavigation(InputAction.CallbackContext context);
-        void OnEnterKeys(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
         void OnPointer(InputAction.CallbackContext context);
     }
 }

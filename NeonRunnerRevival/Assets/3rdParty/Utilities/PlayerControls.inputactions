@@ -235,7 +235,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "EnterKeys",
+                    "name": "Click",
                     "type": "Button",
                     "id": "064caa80-93c1-42cd-9edf-4880c8ed480b",
                     "expectedControlType": "Button",
@@ -386,12 +386,34 @@
                 },
                 {
                     "name": "",
+                    "id": "4500f900-8868-4cc9-a54d-fd16edafe110",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb1fdabf-808a-405d-b1ff-ee4455f1162b",
+                    "path": "<AndroidJoystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d5429cba-99c9-4774-9fb7-b556337f7a66",
                     "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnterKeys",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -402,7 +424,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnterKeys",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -413,7 +435,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnterKeys",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -424,7 +446,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnterKeys",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
