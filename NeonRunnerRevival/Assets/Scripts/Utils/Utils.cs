@@ -40,5 +40,6 @@ namespace NeonRunnerRevival.Assets.Scripts.Utils
             }
 
         }
+
     }
 }

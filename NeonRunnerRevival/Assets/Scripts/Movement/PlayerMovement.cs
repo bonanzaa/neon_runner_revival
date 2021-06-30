@@ -4,6 +4,7 @@ using System.Collections;
 
 namespace NeonRunnerRevival.Assets.Scripts.Movement
 {
+    [RequireComponent(typeof(PlayerStats))]
     class PlayerMovement : MonoBehaviour
     {       
         private PlayerControls _controls;
@@ -24,6 +25,7 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
 
         private void Start() {
             rb = GetComponent<Rigidbody2D>();
+            _playerStats = GetComponent<PlayerStats>();           
             _mainCamera = Camera.main;
         }
 
@@ -42,7 +44,7 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
 
         private void OnEnable()
         {
-            _controls = GetComponent<PlayerStats>()._controls;
+            _controls = _playerStats.Controls;
             _controls.TreadmillControls.Movement.performed += OnMovement;
             _controls.TreadmillControls.Movement.Enable();
 

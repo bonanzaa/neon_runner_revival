@@ -9,7 +9,7 @@ namespace NeonRunnerRevival.Assets.Scripts
     class PlayerStats : MonoBehaviour
     {
         private InputHandler _inputHandler;
-        public PlayerControls _controls;
+        public PlayerControls Controls;
         [SerializeField]
         private int _currentHp;
         [SerializeField]
@@ -19,7 +19,7 @@ namespace NeonRunnerRevival.Assets.Scripts
 
         private void OnEnable() {
             _inputHandler = FindObjectOfType<InputHandler>();
-            _controls = _inputHandler.Instance.GetInputReference();
+            Controls = _inputHandler.Instance.GetInputReference();
         }
 
         private void Start()
