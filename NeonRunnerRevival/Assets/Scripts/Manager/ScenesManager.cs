@@ -25,5 +25,17 @@ namespace NeonRunnerRevival
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        public void RetryPreviousLevel()
+        {
+            LoadScene(GetCurrentSceneIndex() - 1);
+        }
+        public void LoadNextScene()
+        {
+            LoadScene(GetCurrentSceneIndex() + 1);
+        }
+        public void LoadTitleScreen()
+        {
+            LoadScene(0);
+        }
     }
 }
