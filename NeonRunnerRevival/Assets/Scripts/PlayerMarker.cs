@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NeonRunnerRevival.Assets.Scripts
 {
-    class PlayerMarker : MonoBehaviour
+    public class PlayerMarker : MonoBehaviour
     {
         private PlayerTracker _tracker;
         private void Awake()
