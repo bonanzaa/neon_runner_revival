@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeonRunnerRevival.Assets.Scripts.Manager
 {
-    class PlayerTracker : MonoBehaviour
+    public class PlayerTracker : MonoBehaviour
     {
         public static PlayerTracker Instance;
         public PlayerMarker Player;

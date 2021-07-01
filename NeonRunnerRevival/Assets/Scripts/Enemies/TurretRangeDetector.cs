@@ -15,23 +15,38 @@ namespace NeonRunnerRevival
         private bool _shooting = false;
         private bool _playerInRange = false;
         private float _distance;
-        private Transform _playerPos;
+        private Vector3 _playerPos;
         [SerializeField]
         private GameObject _turret;
 
-        private void Start() {
-            _playerPos = PlayerTracker.Instance.transform;
-            if(!ExtendedDetectionRange){
+        private void Update()
+        {
+            DistanceCheck();
+            Debug.Log(_playerPos);
+        }
+
+        private void DistanceCheck()
+        {
+            UpdatePlayerPos();
+            if (!ExtendedDetectionRange)
+            {
                 StartCoroutine(RangeDetection());
-            }else{
+            }
+            else
+            {
                 StartCoroutine(ExtendedRangeDetection());
             }
+        }
+
+        private void UpdatePlayerPos()
+        {
+            _playerPos = PlayerTracker.Instance.Player.transform.position;
         }
 
         private IEnumerator RangeDetection(){
             while(true && _playerPos != null){
 
-                _distance = (_playerPos.position - transform.position).magnitude;
+                _distance = (_playerPos - transform.position).magnitude;
                 switch(_distance < DetectionRange){
 
                     case(false):
@@ -59,7 +74,7 @@ namespace NeonRunnerRevival
 
         private IEnumerator ExtendedRangeDetection(){
             while(true && _playerPos != null){
-                _distance = (_playerPos.position - transform.position).magnitude;
+                _distance = (_playerPos - transform.position).magnitude;
 
                 if(_distance < DetectionRange && !_playerInRange){
                     _playerInRange = true;
@@ -94,7 +109,7 @@ namespace NeonRunnerRevival
             while(_shooting && _playerPos != null){
 
                 // rotating the turret, to face the player
-                Vector2 Direction = _playerPos.position - transform.position;
+                Vector2 Direction = _playerPos - transform.position;
                 float angle = Mathf.Atan2(Direction.y, Direction.x);
                 _turret.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle * Mathf.Rad2Deg - 90));
 
