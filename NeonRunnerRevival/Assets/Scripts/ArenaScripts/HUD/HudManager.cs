@@ -23,17 +23,6 @@ namespace NeonRunnerRevival.Assets.Scripts.ArenaScripts.HUD
             WavesManager.CountdownUpdated += OnCountdownUpdate;
         }
 
-        private void OnCountdownUpdate(float targetVal)
-        {
-            if (targetVal <= float.Epsilon)
-            {
-                _waveTimeDisplay.text = "Next Wave 0";
-            }
-            else
-            {
-                _waveTimeDisplay.text = $"Next Wave {((int)targetVal).ToString()}";
-            }
-        }
 
         private void Start()
         {
@@ -46,6 +35,17 @@ namespace NeonRunnerRevival.Assets.Scripts.ArenaScripts.HUD
             UpdateCurrentWaveDisplay(_currentWave);
         }
 
+        private void OnCountdownUpdate(float targetVal)
+        {
+            if (targetVal <= float.Epsilon)
+            {
+                _waveTimeDisplay.text = "Next Wave -";  
+            }
+            else
+            {
+                _waveTimeDisplay.text = $"Next Wave {(Math.Round(targetVal, 2)).ToString()}";
+            }
+        }
         private void UpdateCurrentWaveDisplay(int currentWave)
         {
             _wavesLeftDisplay.text = $"Wave {currentWave} / {_totalWaves}";
