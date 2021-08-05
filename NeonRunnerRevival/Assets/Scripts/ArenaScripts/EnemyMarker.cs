@@ -8,7 +8,7 @@ namespace NeonRunnerRevival
     {
         void Start()
         {
-            Destroy(gameObject, 3f);
+            //Destroy(gameObject, 3f);
         }       
     }
 }

@@ -24,9 +24,11 @@ namespace NeonRunnerRevival
 
         private SpawnState _state = SpawnState.Checking;
         private GameObject _enemyHolder;
+        private bool _isSpawning;
         private int _nextWave = 0;
         private void Start()
         {
+            _isSpawning = false;
             _waveCountdown = _timeBetweenWaves;
             _enemyHolder = GameObject.Find("EnemyHolder");
         }
@@ -35,6 +37,8 @@ namespace NeonRunnerRevival
                 switch (_state)
                 {
                     case SpawnState.Spawning:
+                    if(!_isSpawning)
+                            StartCoroutine(SpawnWave(_waves[_nextWave]));
                         break;
                     case SpawnState.Waiting:
                         if (AreThereEnemiesAlive())
@@ -51,9 +55,9 @@ namespace NeonRunnerRevival
                         {
                             _state = SpawnState.Finished;
                         }
-                        if(_waveCountdown <= 0)
+                        if(_waveCountdown <= 0 && !AreThereEnemiesAlive())
                         {
-                            StartCoroutine(SpawnWave(_waves[_nextWave]));
+                            _state = SpawnState.Spawning;
                         }
                         else 
                         { 
@@ -66,8 +70,8 @@ namespace NeonRunnerRevival
                     default:
                         break;
                 }
+            Debug.Log($"The enemies are alive:{AreThereEnemiesAlive()}");
         }
-
         private void WaveCompleted()
         {
             //Update UI
@@ -82,8 +86,9 @@ namespace NeonRunnerRevival
             if(_searchCountdown <= 0)
             {
                 _searchCountdown = 1f;
+                //check here something's wrong
                 EnemyMarker enemyMarker = _enemyHolder.GetComponentInChildren<EnemyMarker>();
-                if (enemyMarker)
+                if (enemyMarker !=null)
                 {
                     return true;
                 }
@@ -91,14 +96,16 @@ namespace NeonRunnerRevival
             return false;
         }
         private IEnumerator SpawnWave(Wave wave)
-        {   
+        {
             //Here play Sound
+            _isSpawning = true;
             _state = SpawnState.Spawning;
             for (int i = 0; i < wave.Count; i++)
             {
                 SpawnEnemy(wave.EnemyPrefab,wave.Name);
                 yield return new WaitForSeconds(1f / wave.Rate);
             }
+            _isSpawning = false;
             _state = SpawnState.Waiting;
             yield break;
         }
