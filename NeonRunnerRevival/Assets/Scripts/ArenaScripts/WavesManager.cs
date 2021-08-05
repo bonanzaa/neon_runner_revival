@@ -26,19 +26,30 @@ namespace NeonRunnerRevival
         private GameObject _enemyHolder;
         private bool _isSpawning;
         private int _nextWave = 0;
+
+        public delegate void OnWaveChanged(int newVal);
+        public static event OnWaveChanged WaveHasChanged;
+
+        public delegate void OnWaveCountdownUpdated(float newVal);
+        public static event OnWaveCountdownUpdated CountdownUpdated;
+
         private void Start()
         {
             _isSpawning = false;
             _waveCountdown = _timeBetweenWaves;
             _enemyHolder = GameObject.Find("EnemyHolder");
+            WaveHasChanged?.Invoke(_nextWave + 1);
         }
         private void Update()
         {
                 switch (_state)
                 {
                     case SpawnState.Spawning:
-                    if(!_isSpawning)
+                        if (!_isSpawning)
+                        {
                             StartCoroutine(SpawnWave(_waves[_nextWave]));
+                            WaveHasChanged?.Invoke(_nextWave + 1);
+                        }
                         break;
                     case SpawnState.Waiting:
                         if (AreThereEnemiesAlive())
@@ -71,12 +82,18 @@ namespace NeonRunnerRevival
                         break;
                 }
         }
+
+        private void FixedUpdate()
+        {
+            CountdownUpdated?.Invoke(_waveCountdown);
+        }
+
         private void WaveCompleted()
         {
             //Update UI
             _state = SpawnState.Checking;
             _waveCountdown = _timeBetweenWaves;
-            _nextWave++;
+            _nextWave++;            
         }
 
         private bool AreThereEnemiesAlive()
@@ -101,7 +118,7 @@ namespace NeonRunnerRevival
             _state = SpawnState.Spawning;
             for (int i = 0; i < wave.EnemyPrefabs.Count; i++)
             {
-                SpawnEnemy(wave.EnemyPrefabs[i],wave.Name);
+                SpawnEnemy(wave.EnemyPrefabs[i], wave.Name);
                 yield return new WaitForSeconds(1f / wave.Rate);
             }
             _isSpawning = false;
@@ -114,6 +131,16 @@ namespace NeonRunnerRevival
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
             enemy.transform.SetParent(_enemyHolder.transform);
             enemy.name = "Enemy in {waveName}";
+        }
+
+        public int GetTotalWaveCount()
+        {
+            return _waves.Length;
+        }
+
+        public int GetCurrentWave()
+        {
+            return _nextWave;
         }
 
         [Serializable]
