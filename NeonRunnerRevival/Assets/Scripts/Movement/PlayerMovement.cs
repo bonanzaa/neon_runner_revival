@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using NeonRunnerRevival.Assets.Scripts.Manager;
 
 namespace NeonRunnerRevival.Assets.Scripts.Movement
 {
-    [RequireComponent(typeof(PlayerStats))]
     class PlayerMovement : MonoBehaviour
     {       
         private PlayerControls _controls;
-
         private Vector3 _rawMovementInput = new Vector3(0, 0, 0);
         
         [SerializeField] private float _speed;
@@ -44,7 +43,8 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
 
         private void OnEnable()
         {
-            _controls = _playerStats.Controls;
+            _controls = new PlayerControls();
+
             _controls.TreadmillControls.Movement.performed += OnMovement;
             _controls.TreadmillControls.Movement.Enable();
 

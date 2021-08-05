@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4875708164431691626}
   - component: {fileID: 1831394932876197607}
   - component: {fileID: 483604876}
+  - component: {fileID: 1929246}
+  - component: {fileID: 1929248}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -134,3 +136,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2803ab0afa410eb4da4be571bda96fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1929246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081951176715667958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2003ddae5b9798b4785faf84dfc0a9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 10
+  DashCooldown: 1.5
+  DashDistance: 50
+--- !u!114 &1929248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081951176715667958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 58cf146fd150a2940b8926b55d89e3d5, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1929246}
+        m_TargetAssemblyTypeName: NeonRunnerRevival.Assets.Scripts.Movement.PlayerMovement,
+          Assembly-CSharp
+        m_MethodName: OnMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e7a5eea3-809c-4123-8b19-9849eb28d68a
+    m_ActionName: TreadmillControls/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2694b40a-2e8d-46ea-a6c8-25e837754040
+    m_ActionName: TreadmillControls/Dash[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 569c57ea-28c9-4724-b739-c7b9c21ba8e9
+    m_ActionName: TreadmillControls/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 470be35a-8d28-4335-a2bb-3778f8a05b05
+    m_ActionName: TreadmillControls/MousePosition[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 54187823-7179-44e1-bc35-3da3bc01fa9b
+    m_ActionName: TreadmillControls/DEBUG_RESET[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f40d608-8711-4f79-afaf-09a3cc179db2
+    m_ActionName: Menu/MenuInteractions1[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a2deec31-920b-48ca-8484-b713d8c1e046
+    m_ActionName: Menu/Navigation[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 064caa80-93c1-42cd-9edf-4880c8ed480b
+    m_ActionName: Menu/Click[/Keyboard/enter,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7a49da74-a1a3-4669-a110-cd666dbcc4f6
+    m_ActionName: Menu/Pointer
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: TreadmillControls
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
