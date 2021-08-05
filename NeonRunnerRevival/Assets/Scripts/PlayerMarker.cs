@@ -16,8 +16,8 @@ namespace NeonRunnerRevival.Assets.Scripts
 
         private void ForceGameManagerToKnowAboutMe()
         {
-            //_tracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerTracker>();
-           // _tracker.CashPlayerReference(this);
+            _tracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerTracker>();
+            _tracker.CashPlayerReference(this);
         }
     }
 }
