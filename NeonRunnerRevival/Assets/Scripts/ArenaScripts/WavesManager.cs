@@ -70,7 +70,6 @@ namespace NeonRunnerRevival
                     default:
                         break;
                 }
-            Debug.Log($"The enemies are alive:{AreThereEnemiesAlive()}");
         }
         private void WaveCompleted()
         {
@@ -100,9 +99,9 @@ namespace NeonRunnerRevival
             //Here play Sound
             _isSpawning = true;
             _state = SpawnState.Spawning;
-            for (int i = 0; i < wave.Count; i++)
+            for (int i = 0; i < wave.EnemyPrefabs.Count; i++)
             {
-                SpawnEnemy(wave.EnemyPrefab,wave.Name);
+                SpawnEnemy(wave.EnemyPrefabs[i],wave.Name);
                 yield return new WaitForSeconds(1f / wave.Rate);
             }
             _isSpawning = false;
@@ -120,10 +119,9 @@ namespace NeonRunnerRevival
         [Serializable]
         public class Wave
         {
-            public int Count;
             public float Rate;
-            public GameObject EnemyPrefab;
             public string Name;
+            public List<GameObject> EnemyPrefabs;
         }
     }
 }
