@@ -44,26 +44,30 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
 
         private void OnEnable()
         {
-            _controls = _playerStats.Controls;
-            _controls.TreadmillControls.Movement.performed += OnMovement;
-            _controls.TreadmillControls.Movement.Enable();
+            if(_controls != null){
+                _controls = _playerStats.Controls;
+                _controls.TreadmillControls.Movement.performed += OnMovement;
+                _controls.TreadmillControls.Movement.Enable();
 
-            _controls.TreadmillControls.Dash.performed += OnDash;
-            _controls.TreadmillControls.Dash.Enable();
+                _controls.TreadmillControls.Dash.performed += OnDash;
+                _controls.TreadmillControls.Dash.Enable();
 
-            _controls.TreadmillControls.MousePosition.performed += OnMousePosition;
-            _controls.TreadmillControls.MousePosition.Enable();
+                _controls.TreadmillControls.MousePosition.performed += OnMousePosition;
+                _controls.TreadmillControls.MousePosition.Enable();
+            }
         }
         private void OnDisable()
         {
-            _controls.TreadmillControls.Movement.performed -= OnMovement;
-            _controls.TreadmillControls.Movement.Disable();
+            if(_controls != null){
+                _controls.TreadmillControls.Movement.performed -= OnMovement;
+                _controls.TreadmillControls.Movement.Disable();
 
-            _controls.TreadmillControls.Dash.performed -= OnDash;
-            _controls.TreadmillControls.Dash.Disable();
+                _controls.TreadmillControls.Dash.performed -= OnDash;
+                _controls.TreadmillControls.Dash.Disable();
 
-            _controls.TreadmillControls.MousePosition.performed -= OnMousePosition;
-            _controls.TreadmillControls.MousePosition.Disable();
+                _controls.TreadmillControls.MousePosition.performed -= OnMousePosition;
+                _controls.TreadmillControls.MousePosition.Disable();
+            }
         }
 
         public void OnMovement(UnityEngine.InputSystem.InputAction.CallbackContext context)

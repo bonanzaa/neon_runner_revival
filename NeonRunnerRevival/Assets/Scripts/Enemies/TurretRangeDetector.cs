@@ -22,7 +22,6 @@ namespace NeonRunnerRevival
         private void Update()
         {
             DistanceCheck();
-            Debug.Log(_playerPos);
         }
 
         private void DistanceCheck()
