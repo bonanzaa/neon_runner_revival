@@ -16,6 +16,8 @@ namespace NeonRunnerRevival.Assets.Scripts
 
         private void ForceGameManagerToKnowAboutMe()
         {
+            // make GameManager a singleton, and better use GameManager.Instance
+            // to find it, otherwise this is too slow and will throw null exceptions
             _tracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerTracker>();
             _tracker.CashPlayerReference(this);
         }

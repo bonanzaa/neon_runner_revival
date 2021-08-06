@@ -7,7 +7,7 @@ namespace NeonRunnerRevival.Assets.Scripts.Movement
 {
     class PlayerMovement : MonoBehaviour
     {       
-        private PlayerControls _controls;
+        [NonSerialized] public PlayerControls _controls;
         private Vector3 _rawMovementInput = new Vector3(0, 0, 0);
         
         [SerializeField] private float _speed;
