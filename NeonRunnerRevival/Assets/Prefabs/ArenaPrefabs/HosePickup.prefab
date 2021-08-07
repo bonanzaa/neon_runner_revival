@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2131376101022739752}
   - component: {fileID: 2131376101022739759}
   m_Layer: 0
-  m_Name: WeaponPickup
+  m_Name: HosePickup
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TheHose: {fileID: -2076577082028884697, guid: 9221cbc06a7dac045b4cef9b2214b073, type: 3}
   TheSpread: {fileID: 1514602946430967727, guid: 9221cbc06a7dac045b4cef9b2214b073, type: 3}
-  weaponType: 0
-  RandomWeapon: 1
+  weaponType: 2
+  RandomWeapon: 0
 --- !u!61 &2131376101022739759
 BoxCollider2D:
   m_ObjectHideFlags: 0

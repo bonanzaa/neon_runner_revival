@@ -9,7 +9,7 @@ namespace NeonRunnerRevival.Assets.Scripts
     public class PlayerMarker : MonoBehaviour
     {
         private PlayerTracker _tracker;
-        private void Awake()
+        private void Start()
         {
             ForceGameManagerToKnowAboutMe();
         }
@@ -18,8 +18,10 @@ namespace NeonRunnerRevival.Assets.Scripts
         {
             // make GameManager a singleton, and better use GameManager.Instance
             // to find it, otherwise this is too slow and will throw null exceptions
-            _tracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerTracker>();
-            _tracker.CashPlayerReference(this);
+            if(PlayerTracker.Instance != null){
+                _tracker = PlayerTracker.Instance;
+                _tracker.CashPlayerReference(this);
+            }
         }
     }
 }

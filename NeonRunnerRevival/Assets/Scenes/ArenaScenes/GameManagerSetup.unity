@@ -205,6 +205,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 194343511, guid: a95967ff0df7e0d419d321cf31bd1aa9, type: 3}
+      propertyPath: _maxHP
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2081951176715667958, guid: a95967ff0df7e0d419d321cf31bd1aa9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -282,16 +286,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 514759851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 2064916234097673511, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: -1967631576421560919, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 8056856818456041789, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: 3279352641294131588, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: 3837173908680883260, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 4502412055082496612, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 4754684134866288074, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
 --- !u!114 &514759853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,17 +333,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &538436519 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 483604876, guid: a95967ff0df7e0d419d321cf31bd1aa9, type: 3}
-  m_PrefabInstance: {fileID: 483604874}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2803ab0afa410eb4da4be571bda96fbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &840448757
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +344,7 @@ GameObject:
   - component: {fileID: 840448758}
   - component: {fileID: 840448759}
   - component: {fileID: 840448760}
+  - component: {fileID: 840448761}
   m_Layer: 0
   m_Name: Manager
   m_TagString: GameManager
@@ -418,7 +420,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082267e979f52f042b7f51fbd6a75426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 538436519}
+  Player: {fileID: 0}
+--- !u!114 &840448761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840448757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796c6e60336493047b3efb539ecd5098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loot:
+  - Name: The Hose
+    WeaponDropped: {fileID: 2131376101022739753, guid: 0f840a672d7b7bd4d819233387c8aec6, type: 3}
+    ItemWeight: 1
+  - Name: The Spread
+    WeaponDropped: {fileID: 2131376101022739753, guid: 32c2f5efa55991a49a36f5ea8213f200, type: 3}
+    ItemWeight: 4
+  - Name: Nothing
+    WeaponDropped: {fileID: 0}
+    ItemWeight: 5
+  InitialRoll: 0
 --- !u!1 &888280920
 GameObject:
   m_ObjectHideFlags: 0

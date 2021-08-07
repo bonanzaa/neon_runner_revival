@@ -11,13 +11,23 @@ namespace NeonRunnerRevival.Assets.Scripts
         [SerializeField]
         private int _currentHp;
         [SerializeField]
-        private int _maxHP = 10;
-        public float FireRate = 0.1f;
-
+        private int _maxHP = 3;
 
         private void Start()
         {
             _currentHp = _maxHP;
+        }
+
+        public void TakeDamage(int dmg){
+            _currentHp -= dmg;
+            if(_currentHp <= 0){
+                Die();
+            }
+        }
+
+        private void Die(){
+            Time.timeScale = 0;
+            print("Player has died");
         }
 
         #region HP Methods

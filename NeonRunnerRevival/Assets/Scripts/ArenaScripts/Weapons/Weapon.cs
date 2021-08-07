@@ -8,7 +8,7 @@ namespace NeonRunnerRevival
     {
         public WeaponType weaponType;
         public float AttackSpeed;
-        public int Damage;
+        public float Damage;
         public int BulletsFired;
         public int CurrentAmmo;
         public int MaxAmmo;

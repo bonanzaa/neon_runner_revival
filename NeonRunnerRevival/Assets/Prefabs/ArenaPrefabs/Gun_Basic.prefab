@@ -128,9 +128,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 0
   AttackSpeed: 1
-  Damage: 0
-  BulletsFired: 0
-  Ammo: 0
+  Damage: 1
+  BulletsFired: 1
+  CurrentAmmo: 0
+  MaxAmmo: 0
   InfiniteAmmo: 0
   BulletPrefab: {fileID: 557255051648751268, guid: 3fa9180a1ebfd2645ab0ecdac8025291, type: 3}
   FirePoint: {fileID: 5403781636491891424}
+  SpreadAngle: 0

@@ -33,7 +33,11 @@ namespace NeonRunnerRevival
 
         private Vector3 UpdatePlayerPosition()
         {
-            return PlayerTracker.Instance.Player.transform.position;
+            if(PlayerTracker.Instance != null){
+                return PlayerTracker.Instance.Player.transform.position;
+            }else{
+                return Vector3.zero;
+            }
         }
     }
 }

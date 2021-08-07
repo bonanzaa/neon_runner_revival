@@ -76,7 +76,7 @@ namespace NeonRunnerRevival
                         }
                         break;
                     case SpawnState.Finished:
-                        Debug.Log($"Finished game after {_waves.Length} rounds");
+                        //Debug.Log($"Finished game after {_waves.Length} rounds");
                         break;
                     default:
                         break;
