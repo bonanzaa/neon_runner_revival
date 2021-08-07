@@ -22,6 +22,10 @@ namespace NeonRunnerRevival
         private float _fireRate;
         private static int _maxAmmo;
 
+
+        // debug for shotgun
+        public float SpreadAngle;
+
         private void OnEnable() {
             _fireRate = 1 / AttackSpeed;
             ResetAmmo();
@@ -43,29 +47,73 @@ namespace NeonRunnerRevival
         }
 
         public void OnShoot(){
+            // if the gun still can't shoot - return
             if(_attackTimer < _fireRate){
                 return;
             }
-            if(!InfiniteAmmo && CurrentAmmo > 0){
+            if(CurrentAmmo > 0 || InfiniteAmmo){
+                switch(weaponType){
+                    case(WeaponType.BasicGun):
+                    BasicGunShoot();
+                    break;
 
-                GameObject bullet = Instantiate(BulletPrefab,FirePoint.transform.position, transform.rotation * Quaternion.Euler(0,0, -90));
-                bullet.GetComponent<PlayerProjectile>().Damage = Damage;
+                    case(WeaponType.TheHose):
+                    TheHoseShoot();
+                    break;
 
-                _attackTimer -= _attackTimer;
-                CurrentAmmo--;
-
-                if(CurrentAmmo == 0){
-                    // switch the weapon back to the basic gun
-                    _playerShoot.SwitchWeapon(WeaponType.BasicGun);
+                    case(WeaponType.TheSpread):
+                    TheSpreadShoot();
+                    break;
                 }
-            }else if(InfiniteAmmo){
-                GameObject bullet = Instantiate(BulletPrefab,FirePoint.transform.position, transform.rotation * Quaternion.Euler(0,0, -90));
-                bullet.GetComponent<PlayerProjectile>().Damage = Damage;
-
-                _attackTimer -= _attackTimer;
             }
         }
+
+        private void BasicGunShoot(){
+            // PLAY AUDIO FOR BASIC GUN HERE
+
+            GameObject bullet = Instantiate(BulletPrefab,FirePoint.transform.position, transform.rotation * Quaternion.Euler(0,0, -90));
+            bullet.GetComponent<PlayerProjectile>().Damage = Damage;
+
+             _attackTimer -= _attackTimer;
+        }
+
+        private void TheHoseShoot(){
+            // PLAY AUDIO FOR THE HOSE GUN HERE
+
+            GameObject bullet = Instantiate(BulletPrefab,FirePoint.transform.position, transform.rotation * Quaternion.Euler(0,0, -90));
+            bullet.GetComponent<PlayerProjectile>().Damage = Damage;
+
+             _attackTimer -= _attackTimer;
+            CurrentAmmo--;
+
+            if(CurrentAmmo == 0){
+                _playerShoot.SwitchWeapon(WeaponType.BasicGun);
+            }
+        }
+
+        private void TheSpreadShoot(){
+            // PLAY AUDIO FOR THE SPREAD GUN HERE
+
+            float angle = -SpreadAngle/BulletsFired;
+            float angleStep = SpreadAngle / (BulletsFired -1);
+            for (int i = 0; i < BulletsFired; i++)
+            {
+                GameObject bullet = Instantiate(BulletPrefab,FirePoint.transform.position, transform.rotation * Quaternion.Euler(0,0, angle - 90));
+                angle += angleStep;
+                bullet.GetComponent<PlayerProjectile>().Damage = Damage;
+
+                CurrentAmmo--;
+                
+            }
+            if(CurrentAmmo == 0){
+                _playerShoot.SwitchWeapon(WeaponType.BasicGun);
+            }
+
+            _attackTimer -= _attackTimer;
+        }
     }
+    // using enum to tell the weapons apart
+    // YES it's not scalable, but it's easy and convenient
         public enum WeaponType{
             BasicGun,
             TheSpread,

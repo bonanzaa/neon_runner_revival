@@ -30,7 +30,7 @@ namespace NeonRunnerRevival
             //_controls = GetComponent<PlayerMovement>()._controls;
             _controls.TreadmillControls.Shoot.performed += OnShoot;
             _controls.TreadmillControls.Shoot.Enable();
-            SwitchWeapon(WeaponType.TheHose);
+            SwitchWeapon(WeaponType.TheSpread);
         }
 
         public void SwitchWeapon(WeaponType weaponType){

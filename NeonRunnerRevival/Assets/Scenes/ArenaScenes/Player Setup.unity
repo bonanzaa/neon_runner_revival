@@ -206,6 +206,14 @@ PrefabInstance:
       propertyPath: MaxAmmo
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8929809943798434249, guid: a95967ff0df7e0d419d321cf31bd1aa9, type: 3}
+      propertyPath: SpreadAngle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929809943798434249, guid: a95967ff0df7e0d419d321cf31bd1aa9, type: 3}
+      propertyPath: BulletsFired
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 483604876, guid: a95967ff0df7e0d419d321cf31bd1aa9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a95967ff0df7e0d419d321cf31bd1aa9, type: 3}
